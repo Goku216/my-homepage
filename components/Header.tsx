@@ -29,6 +29,7 @@ import {
   Mail
 } from 'lucide-react';
 import { ToggleMode } from './ToggleMode';
+import { useSearchStore } from '@/lib/search-store';
 
 // TypeScript interfaces
 interface BlogCategory {
@@ -58,7 +59,8 @@ interface HeaderProps {
 const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
-  const [searchQuery, setSearchQuery] = useState<string>("");
+  const searchQuery= useSearchStore((state)=> state.searchTerm);
+  const setSearchQuery= useSearchStore((state)=> state.setSearchTerm)
 
   // Blog categories data
   const categories: BlogCategory[] = [
