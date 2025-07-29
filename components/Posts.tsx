@@ -10,7 +10,7 @@ import { useSearchStore } from '@/lib/search-store'
 export default function Posts() {
 
   const searchQuery = useSearchStore((state)=> state.searchTerm)
-  const [debouncedSearch, setDebouncedSearch] = useState(searchQuery)
+  const [debouncedSearch, setDebouncedSearch] = useState<string>(searchQuery)
 
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedSearch(searchQuery), 300)
